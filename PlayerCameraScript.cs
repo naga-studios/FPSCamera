@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,10 +12,8 @@ public class PlayerCameraScript : MonoBehaviour
     [SerializeField] private Transform player;
 
     private Transform cameraTransform;
-    private Vector2 currentPos;
-    private Vector2 newPos;
 
-    private float verticalLookRotation;
+    private float yRotation;
 
     void Start()
     {
@@ -30,8 +28,8 @@ public class PlayerCameraScript : MonoBehaviour
     private void CheckForMouseMovement()
     {
         player.Rotate(Vector3.up * Input.GetAxis("Mouse X") * cameraSensitivity);
-        verticalLookRotation += Input.GetAxis("Mouse Y") * cameraSensitivity;
-        verticalLookRotation = Mathf.Clamp(verticalLookRotation, yMin, yMax);
-        cameraTransform.localEulerAngles = Vector3.left * verticalLookRotation;
+        yRotation += Input.GetAxis("Mouse Y") * cameraSensitivity;
+        yRotation = Mathf.Clamp(yRotation, yMin, yMax);
+        cameraTransform.localEulerAngles = Vector3.left * yRotation;
     }
 }
